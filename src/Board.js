@@ -79,8 +79,7 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      //alert('check')
-      //console.log("rowIndex", this);
+
       var counter = 0;
       var row = this.get(rowIndex);
 
@@ -196,7 +195,6 @@
           }
           Column++;
         }
-        console.log('hey at first row', majorDiagonalColumnIndexAtFirstRow);
         return false; // fixme
 
 
@@ -243,26 +241,19 @@
       if(target < max){
         Column = target;
         row = 0;
-      } else { debugger;
+      } else {
         Column = max - 1;
+        //nice move
         row = target - max +1;
       }
-/*      } else {
-        row = Math.abs(target);
-        Column = max;
-      }*/
 
-  console.log('hey at first row', minorDiagonalColumnIndexAtFirstRow);
+
+
 
 if (target < max){
- console.log(this.get('n'));
+
 
         for (var i = Column; i >= 0; i--) {
-          if ( row === 4 && i === 0)  {
-            debugger;
-          }
-          console.log('row', row);
-          console.log('col', i);
 
           var currVal = this.get(row)[i];
           if (this.get(row)[i] === 1) {
