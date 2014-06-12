@@ -155,23 +155,60 @@
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       var count = 0;
-      var Column = majorDiagonalColumnIndexAtFirstRow;
+      var target = majorDiagonalColumnIndexAtFirstRow;
       var max = this.get('n');
-      var row = 0;
+      var row;
+      var Column;
 
-      for (var i = Column; i < max; i++) {
-
-        var currVal = this.get(row)[i];
-        if (this.get(row)[i] === 1) {
-          count++;
-          if (count === 2) {
-            return true;
-          }
-        }
-        row++;
+      if(target>=0){
+        Column = target;
+        row = 0;
+      } else {
+        row = Math.abs(target);
+        Column =0;
       }
-      console.log('hey at first row', majorDiagonalColumnIndexAtFirstRow);
-      return false; // fixme
+
+      if (target >=0){
+
+        for (var i = Column; i < max; i++) {
+
+          // var currVal = this.get(row)[i];
+          if (this.get(row)[i] === 1) {
+            count++;
+            if (count === 2) {
+              return true;
+            }
+          }
+          row++;
+        }
+        console.log('hey at first row', majorDiagonalColumnIndexAtFirstRow);
+        return false; // fixme
+      } else {
+        // -target code
+
+        for (var i = row; i < max; i++) {
+
+          // var currVal = this.get(row)[i];
+          if (this.get(i)[Column] === 1) {
+            count++;
+            if (count === 2) {
+              return true;
+            }
+          }
+          Column++;
+        }
+        console.log('hey at first row', majorDiagonalColumnIndexAtFirstRow);
+        return false; // fixme
+
+
+
+
+
+
+      }
+
+
+
     },
 
     // test if any major diagonals on this board contain conflicts
@@ -199,22 +236,59 @@
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       var count = 0;
-      var Column = minorDiagonalColumnIndexAtFirstRow;
+      var target = minorDiagonalColumnIndexAtFirstRow;
       var max = this.get('n');
-      var row = 0;
+      var row;
+      var Column;
 
-      for (var i = Column; i >= 0; i--) {
-
-        var currVal = this.get(row)[i];
-        if (this.get(row)[i] === 1) {
-          count++;
-          if (count === 2) {
-            return true;
-          }
-        }
-        row++;
+      if(target>=0){
+        Column = target;
+        row = 0;
+      } else {
+        row = Math.abs(target);
+        Column =max;
       }
-      return false; // fixme
+
+
+if (target >=0){
+
+  /*if ( row > max)  {
+    debugger;
+  }*/
+
+/*        for (var i = Column; i >= 0; i--) {
+
+          var currVal = this.get(row)[i];
+          if (this.get(row)[i] === 1) {
+            count++;
+            if (count === 2) {
+              return true;
+            }
+          }
+          row++;
+        }
+        return false; // fixme*/
+} else {
+
+          for (var i = row; i < max; i++) {
+
+
+          if (this.get(i)[Column] === 1) {
+            count++;
+            if (count === 2) {
+              return true;
+            }
+          }
+          Column--;
+        }
+        return false; // fixme
+
+
+}
+
+
+
+
     },
 
     // test if any minor diagonals on this board contain conflicts
