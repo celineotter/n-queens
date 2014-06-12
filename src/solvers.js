@@ -22,9 +22,9 @@ window.findNRooksSolution = function(n) {
   var matrix = goodBoard.rows();
   console.log('init', matrix);
 
-  for (var row = 0; row < n; row++) { debugger;
+  for (var row = 0; row < n; row++) {
 
-    for (var col = 0; col < n; col++) { debugger;
+    for (var col = 0; col < n; col++) {
       // check spot row x col passes all test
       goodBoard.togglePiece(row, col);
 
@@ -44,7 +44,20 @@ window.findNRooksSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var solutionCount = 0;
+
+  var rooker = function(r, boardSoFar, solution){
+
+    console.log('arguments', arguments);
+
+
+
+
+  };
+
+
+
+  rooker(n, new Board({n:n}));
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
