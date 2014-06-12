@@ -167,8 +167,8 @@
         row = Math.abs(target);
         Column =0;
       }
-
       if (target >=0){
+
 
         for (var i = Column; i < max; i++) {
 
@@ -181,7 +181,6 @@
           }
           row++;
         }
-        console.log('hey at first row', majorDiagonalColumnIndexAtFirstRow);
         return false; // fixme
       } else {
         // -target code
@@ -241,22 +240,29 @@
       var row;
       var Column;
 
-      if(target>=0){
+      if(target < max){
         Column = target;
         row = 0;
-      } else {
-        row = Math.abs(target);
-        Column =max;
+      } else { debugger;
+        Column = max - 1;
+        row = target - max +1;
       }
+/*      } else {
+        row = Math.abs(target);
+        Column = max;
+      }*/
 
+  console.log('hey at first row', minorDiagonalColumnIndexAtFirstRow);
 
-if (target >=0){
+if (target < max){
+ console.log(this.get('n'));
 
-  /*if ( row > max)  {
-    debugger;
-  }*/
-
-/*        for (var i = Column; i >= 0; i--) {
+        for (var i = Column; i >= 0; i--) {
+          if ( row === 4 && i === 0)  {
+            debugger;
+          }
+          console.log('row', row);
+          console.log('col', i);
 
           var currVal = this.get(row)[i];
           if (this.get(row)[i] === 1) {
@@ -267,8 +273,22 @@ if (target >=0){
           }
           row++;
         }
-        return false; // fixme*/
-} else {
+        return false; // fixme
+
+  } else {
+    for (var i = row; i < max; i++) {
+
+    if (this.get(i)[Column] === 1) {
+      count++;
+      if (count === 2) {
+        return true;
+      }
+    }
+    Column--;
+  }
+  return false;
+  }
+/*} else {
 
           for (var i = row; i < max; i++) {
 
@@ -282,9 +302,7 @@ if (target >=0){
           Column--;
         }
         return false; // fixme
-
-
-}
+}*/
 
 
 
