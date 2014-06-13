@@ -196,23 +196,17 @@
           Column++;
         }
         return false; // fixme
-
-
-
-
-
-
       }
-
-
-
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
+      //temp fix
       var max = this.get('n');
+      var start = (max-(max*2));
 
-      for (var i = 0; i < max; i++){
+
+      for (var i = start; i < max-1; i++){
         if(this.hasMajorDiagonalConflictAt(i)){
           return true;
         }
@@ -302,7 +296,9 @@ if (target < max){
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      var max = this.get('n')-1;
+      //test fix
+      var tempN = this.get('n');
+      var max = (tempN-1)+tempN;
 
       for (var i = max; i >= 0; i--){
         if(this.hasMinorDiagonalConflictAt(i)){

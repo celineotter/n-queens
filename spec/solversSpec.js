@@ -34,16 +34,30 @@ describe('solvers', function() {
         var solutionBoard = new Board(findNQueensSolution(n));
 
         expect(solutionBoard.get('n')).to.equal(n);
+        //console.log("solution board", solutionBoard);
         expect(solutionBoard.hasAnyQueensConflicts()).to.be.equal(false);
       });
     });
 
   });
 
+//special test
+// debugger;
+// var testBoard=new Board({n:3});
+// testBoard.togglePiece(0,0);
+// testBoard.togglePiece(1,2);
+// testBoard.togglePiece(2,1);
+// console.log("test board ", testBoard);
+// testBoard.hasAnyMajorDiagonalConflicts();
+
+
+
+
   describe('countNQueensSolutions()', function() {
 
     it('finds the number of valid solutions for n of 0-8', function() {
       _.range(0, 9).map(function(n) {
+
         var solutionCount = countNQueensSolutions(n);
         var expectedSolutionCount = [1, 1, 0, 0, 2, 10, 4, 40, 92][n];
 
